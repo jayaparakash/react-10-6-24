@@ -1,14 +1,19 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom"
+import { ADD, REMOVE } from "../cart/CartSlice";
 export const SingleProduct = ()=>{
+
+    let dispatch = useDispatch()
+
     let {id} =useParams()
-    console.log(id);
+   
     let [singleProduct,setSingleProduct] = useState({})
     useEffect(()=>{
         async function dataApi() {
             let {data} = await axios.get(`https://dummyjson.com/products/${id}`)
-            console.log(data);
+            // console.log(data);
             setSingleProduct(data)
         }
 dataApi()
@@ -28,8 +33,8 @@ dataApi()
                     <p class="card-text">{singleProduct.description}</p>
                     <mark>{singleProduct.price}</mark>
                         <br />
-                    <button className="btn btn-warning m-4">Add Product</button>
-                    <button className="btn btn-danger">Remove</button>
+                    <button className="btn btn-warning m-4" onClick={()=>dispatch(ADD({...singleProduct,quantity:1}))}>Add Product</button>
+                    <button className="btn btn-danger" onClick={()=>dispatch(REMOVE(singleProduct.id))}>Remove</button>
                   </div>
 </div>
             </div>

@@ -5,6 +5,7 @@ import { Blog } from "../Pages/blog/Blog"
 import { Cart } from "../Pages/cart/Cart"
 import { Form } from "../Pages/form/Form"
 import { SingleProduct } from "../Features/products/SiniglePageProducts"
+import { UserList } from "../Pages/userData/UserList"
 export const AppRouter = ()=>{
     return(
         <>
@@ -15,6 +16,8 @@ export const AppRouter = ()=>{
         <Route path='/blog' element={<Blog />} />
         <Route path="/cart" element={<Cart />} />
         <Route  path="/userform" element={<Form />} />
+                <Route  path="/userlist" element={<UserList />} />
+
       </Routes>
 
         </>

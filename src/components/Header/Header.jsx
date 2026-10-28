@@ -1,6 +1,11 @@
+import { useSelector } from "react-redux"
 import { Link } from "react-router-dom"
 
 export const Header = ()=>{
+
+  let cartData = useSelector(state => state.cart)
+  console.log(cartData);
+    
     return(
         <>
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -26,8 +31,13 @@ export const Header = ()=>{
           <Link className="nav-link" to='/userform' >form</Link>
         </li>
 
+        
          <li className="nav-item">
-          <a className="nav-link" href='/cart'>Cart</a>
+          <Link className="nav-link" to='/userlist' >userData</Link>
+        </li>
+
+         <li className="nav-item">
+          <a className="nav-link" href='/cart'>Cart <sup>{cartData.length}</sup></a>
         </li>
       </ul>
       <form className="d-flex" role="search">
